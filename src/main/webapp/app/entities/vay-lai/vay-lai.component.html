@@ -1,0 +1,74 @@
+<div>
+    <h2>
+        <span>Vay Lais</span>
+        <button class="btn btn-primary float-right jh-create-entity create-vay-lai" [routerLink]="['/', { outlets: { popup: ['vay-lai-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span >
+            Create new Vay Lai
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="vayLais">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span>ID</span></th>
+            <th><span>Tienvay</span></th>
+            <th><span>Hinhthuclai</span></th>
+            <th><span>Thoigianvay</span></th>
+            <th><span>Chukylai</span></th>
+            <th><span>Lai</span></th>
+            <th><span>Cachtinhlai</span></th>
+            <th><span>Hopdongvl</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let vayLai of vayLais ;trackBy: trackId">
+                <td><a [routerLink]="['../vay-lai', vayLai.id ]">{{vayLai.id}}</a></td>
+                <td>{{vayLai.tienvay}}</td>
+                <td>{{vayLai.hinhthuclai}}</td>
+                <td>{{vayLai.thoigianvay}}</td>
+                <td>{{vayLai.chukylai}}</td>
+                <td>{{vayLai.lai}}</td>
+                <td>{{vayLai.cachtinhlai}}</td>
+                <td>
+                    <div *ngIf="vayLai.hopdongvlId">
+                        <a [routerLink]="['../hop-dong', vayLai.hopdongvlId  ]" >{{vayLai.hopdongvlId}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../vay-lai', vayLai.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'vay-lai/'+ vayLai.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'vay-lai/'+ vayLai.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

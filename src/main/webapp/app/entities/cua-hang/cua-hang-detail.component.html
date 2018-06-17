@@ -1,0 +1,52 @@
+
+<div *ngIf="cuaHang">
+    <h2><span>Cua Hang</span> {{cuaHang.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span>Ten</span></dt>
+        <dd>
+            <span>{{cuaHang.ten}}</span>
+        </dd>
+        <dt><span>Diachi</span></dt>
+        <dd>
+            <span>{{cuaHang.diachi}}</span>
+        </dd>
+        <dt><span>Dienthoai</span></dt>
+        <dd>
+            <span>{{cuaHang.dienthoai}}</span>
+        </dd>
+        <dt><span>Cmnd</span></dt>
+        <dd>
+            <span>{{cuaHang.cmnd}}</span>
+        </dd>
+        <dt><span>Trangthai</span></dt>
+        <dd>
+            <span>{{cuaHang.trangthai}}</span>
+        </dd>
+        <dt><span>Ngay Tao</span></dt>
+        <dd>
+            <span>{{cuaHang.ngayTao | date:'medium'}}</span>
+        </dd>
+        <dt><span>Xa</span></dt>
+        <dd>
+            <div *ngIf="cuaHang.xaId">
+                <a [routerLink]="['/xa', cuaHang.xaId]">{{cuaHang.xaId}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'cua-hang/'+ cuaHang.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span> Edit</span>
+    </button>
+</div>

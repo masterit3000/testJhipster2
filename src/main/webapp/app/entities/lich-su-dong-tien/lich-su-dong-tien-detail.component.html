@@ -1,0 +1,44 @@
+
+<div *ngIf="lichSuDongTien">
+    <h2><span>Lich Su Dong Tien</span> {{lichSuDongTien.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span>Ngaybatdau</span></dt>
+        <dd>
+            <span>{{lichSuDongTien.ngaybatdau | date:'medium'}}</span>
+        </dd>
+        <dt><span>Ngayketthuc</span></dt>
+        <dd>
+            <span>{{lichSuDongTien.ngayketthuc | date:'medium'}}</span>
+        </dd>
+        <dt><span>Sotien</span></dt>
+        <dd>
+            <span>{{lichSuDongTien.sotien}}</span>
+        </dd>
+        <dt><span>Trangthai</span></dt>
+        <dd>
+            <span>{{lichSuDongTien.trangthai}}</span>
+        </dd>
+        <dt><span>Hop Dong</span></dt>
+        <dd>
+            <div *ngIf="lichSuDongTien.hopDongId">
+                <a [routerLink]="['/hop-dong', lichSuDongTien.hopDongId]">{{lichSuDongTien.hopDongId}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'lich-su-dong-tien/'+ lichSuDongTien.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span> Edit</span>
+    </button>
+</div>

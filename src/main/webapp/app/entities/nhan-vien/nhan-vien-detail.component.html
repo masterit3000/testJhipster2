@@ -1,0 +1,66 @@
+
+<div *ngIf="nhanVien">
+    <h2><span>Nhan Vien</span> {{nhanVien.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span>Tendangnhap</span></dt>
+        <dd>
+            <span>{{nhanVien.tendangnhap}}</span>
+        </dd>
+        <dt><span>Matkhau</span></dt>
+        <dd>
+            <span>{{nhanVien.matkhau}}</span>
+        </dd>
+        <dt><span>Ten</span></dt>
+        <dd>
+            <span>{{nhanVien.ten}}</span>
+        </dd>
+        <dt><span>Diachi</span></dt>
+        <dd>
+            <span>{{nhanVien.diachi}}</span>
+        </dd>
+        <dt><span>Dienthoai</span></dt>
+        <dd>
+            <span>{{nhanVien.dienthoai}}</span>
+        </dd>
+        <dt><span>Cmnd</span></dt>
+        <dd>
+            <span>{{nhanVien.cmnd}}</span>
+        </dd>
+        <dt><span>Trangthai</span></dt>
+        <dd>
+            <span>{{nhanVien.trangthai}}</span>
+        </dd>
+        <dt><span>Ngay Tao</span></dt>
+        <dd>
+            <span>{{nhanVien.ngayTao | date:'medium'}}</span>
+        </dd>
+        <dt><span>Xa</span></dt>
+        <dd>
+            <div *ngIf="nhanVien.xaId">
+                <a [routerLink]="['/xa', nhanVien.xaId]">{{nhanVien.xaId}}</a>
+            </div>
+        </dd>
+        <dt><span>Cua Hang</span></dt>
+        <dd>
+            <div *ngIf="nhanVien.cuaHangId">
+                <a [routerLink]="['/cua-hang', nhanVien.cuaHangId]">{{nhanVien.cuaHangId}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'nhan-vien/'+ nhanVien.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span> Edit</span>
+    </button>
+</div>

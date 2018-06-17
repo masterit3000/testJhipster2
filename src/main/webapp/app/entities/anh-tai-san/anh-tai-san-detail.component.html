@@ -1,0 +1,32 @@
+
+<div *ngIf="anhTaiSan">
+    <h2><span>Anh Tai San</span> {{anhTaiSan.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span>Url</span></dt>
+        <dd>
+            <span>{{anhTaiSan.url}}</span>
+        </dd>
+        <dt><span>Tai San</span></dt>
+        <dd>
+            <div *ngIf="anhTaiSan.taiSanId">
+                <a [routerLink]="['/tai-san', anhTaiSan.taiSanId]">{{anhTaiSan.taiSanId}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'anh-tai-san/'+ anhTaiSan.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span> Edit</span>
+    </button>
+</div>

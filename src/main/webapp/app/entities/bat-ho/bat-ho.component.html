@@ -1,0 +1,70 @@
+<div>
+    <h2>
+        <span>Bat Hos</span>
+        <button class="btn btn-primary float-right jh-create-entity create-bat-ho" [routerLink]="['/', { outlets: { popup: ['bat-ho-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span >
+            Create new Bat Ho
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="batHos">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span>ID</span></th>
+            <th><span>Tienduakhach</span></th>
+            <th><span>Tongtien</span></th>
+            <th><span>Tongsongay</span></th>
+            <th><span>Chuky</span></th>
+            <th><span>Hopdongbh</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let batHo of batHos ;trackBy: trackId">
+                <td><a [routerLink]="['../bat-ho', batHo.id ]">{{batHo.id}}</a></td>
+                <td>{{batHo.tienduakhach}}</td>
+                <td>{{batHo.tongtien}}</td>
+                <td>{{batHo.tongsongay}}</td>
+                <td>{{batHo.chuky}}</td>
+                <td>
+                    <div *ngIf="batHo.hopdongbhId">
+                        <a [routerLink]="['../hop-dong', batHo.hopdongbhId  ]" >{{batHo.hopdongbhId}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../bat-ho', batHo.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'bat-ho/'+ batHo.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'bat-ho/'+ batHo.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,92 @@
+<div>
+    <h2>
+        <span>Khach Hangs</span>
+        <button class="btn btn-primary float-right jh-create-entity create-khach-hang" [routerLink]="['/', { outlets: { popup: ['khach-hang-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span >
+            Create new Khach Hang
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="khachHangs">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th jhiSortBy="id"><span>ID</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="ten"><span>Ten</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="diachi"><span>Diachi</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="dienthoai"><span>Dienthoai</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="cmnd"><span>Cmnd</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="trangthai"><span>Trangthai</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="ngayTao"><span>Ngay Tao</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="email"><span>Email</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="facebook"><span>Facebook</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="xaId"><span>Xa</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="cuaHangId"><span>Cua Hang</span> <span class="fa fa-sort"></span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let khachHang of khachHangs ;trackBy: trackId">
+                <td><a [routerLink]="['../khach-hang', khachHang.id ]">{{khachHang.id}}</a></td>
+                <td>{{khachHang.ten}}</td>
+                <td>{{khachHang.diachi}}</td>
+                <td>{{khachHang.dienthoai}}</td>
+                <td>{{khachHang.cmnd}}</td>
+                <td>{{khachHang.trangthai}}</td>
+                <td>{{khachHang.ngayTao | date:'medium'}}</td>
+                <td>{{khachHang.email}}</td>
+                <td>{{khachHang.facebook}}</td>
+                <td>
+                    <div *ngIf="khachHang.xaId">
+                        <a [routerLink]="['../xa', khachHang.xaId  ]" >{{khachHang.xaId}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="khachHang.cuaHangId">
+                        <a [routerLink]="['../cua-hang', khachHang.cuaHangId  ]" >{{khachHang.cuaHangId}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../khach-hang', khachHang.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'khach-hang/'+ khachHang.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'khach-hang/'+ khachHang.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="khachHangs && khachHangs.length">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="queryCount" [maxSize]="5" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,37 @@
+
+entity Tinh {
+	ten String
+}
+
+entity Xa {
+	ten String
+}
+
+// an ignored comment
+/** not an ignored comment */
+entity Huyen {
+	ten String
+}
+
+
+// defining multiple OneToMany relationships with comments
+relationship OneToMany {
+	Tinh{huyen} to Huyen,
+	/**
+	* A relationship
+	*/
+	Huyen{xa} to
+	/**
+	* Another side of the same relationship
+	*/
+	Xa
+}
+
+
+
+dto * with mapstruct
+
+// Set service options to all except few
+service all with serviceImpl except Tinh, Xa, Huyen
+// Set an angular suffix
+angularSuffix * with mySuffix

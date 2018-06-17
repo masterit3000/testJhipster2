@@ -1,0 +1,66 @@
+
+<div *ngIf="khachHang">
+    <h2><span>Khach Hang</span> {{khachHang.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span>Ten</span></dt>
+        <dd>
+            <span>{{khachHang.ten}}</span>
+        </dd>
+        <dt><span>Diachi</span></dt>
+        <dd>
+            <span>{{khachHang.diachi}}</span>
+        </dd>
+        <dt><span>Dienthoai</span></dt>
+        <dd>
+            <span>{{khachHang.dienthoai}}</span>
+        </dd>
+        <dt><span>Cmnd</span></dt>
+        <dd>
+            <span>{{khachHang.cmnd}}</span>
+        </dd>
+        <dt><span>Trangthai</span></dt>
+        <dd>
+            <span>{{khachHang.trangthai}}</span>
+        </dd>
+        <dt><span>Ngay Tao</span></dt>
+        <dd>
+            <span>{{khachHang.ngayTao | date:'medium'}}</span>
+        </dd>
+        <dt><span>Email</span></dt>
+        <dd>
+            <span>{{khachHang.email}}</span>
+        </dd>
+        <dt><span>Facebook</span></dt>
+        <dd>
+            <span>{{khachHang.facebook}}</span>
+        </dd>
+        <dt><span>Xa</span></dt>
+        <dd>
+            <div *ngIf="khachHang.xaId">
+                <a [routerLink]="['/xa', khachHang.xaId]">{{khachHang.xaId}}</a>
+            </div>
+        </dd>
+        <dt><span>Cua Hang</span></dt>
+        <dd>
+            <div *ngIf="khachHang.cuaHangId">
+                <a [routerLink]="['/cua-hang', khachHang.cuaHangId]">{{khachHang.cuaHangId}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'khach-hang/'+ khachHang.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span> Edit</span>
+    </button>
+</div>

@@ -1,0 +1,44 @@
+
+<div *ngIf="batHo">
+    <h2><span>Bat Ho</span> {{batHo.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span>Tienduakhach</span></dt>
+        <dd>
+            <span>{{batHo.tienduakhach}}</span>
+        </dd>
+        <dt><span>Tongtien</span></dt>
+        <dd>
+            <span>{{batHo.tongtien}}</span>
+        </dd>
+        <dt><span>Tongsongay</span></dt>
+        <dd>
+            <span>{{batHo.tongsongay}}</span>
+        </dd>
+        <dt><span>Chuky</span></dt>
+        <dd>
+            <span>{{batHo.chuky}}</span>
+        </dd>
+        <dt><span>Hopdongbh</span></dt>
+        <dd>
+            <div *ngIf="batHo.hopdongbhId">
+                <a [routerLink]="['/hop-dong', batHo.hopdongbhId]">{{batHo.hopdongbhId}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'bat-ho/'+ batHo.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span> Edit</span>
+    </button>
+</div>

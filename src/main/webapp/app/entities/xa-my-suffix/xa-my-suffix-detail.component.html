@@ -1,0 +1,32 @@
+
+<div *ngIf="xa">
+    <h2><span>Xa</span> {{xa.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span>Ten</span></dt>
+        <dd>
+            <span>{{xa.ten}}</span>
+        </dd>
+        <dt><span>Huyen</span></dt>
+        <dd>
+            <div *ngIf="xa.huyenId">
+                <a [routerLink]="['/huyen-my-suffix', xa.huyenId]">{{xa.huyenId}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'xa-my-suffix/'+ xa.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span> Edit</span>
+    </button>
+</div>

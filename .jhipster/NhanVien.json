@@ -1,0 +1,93 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "xa",
+            "otherEntityName": "xa",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipName": "cuaHang",
+            "otherEntityName": "cuaHang",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "thuchi",
+            "otherEntityName": "thuChi",
+            "otherEntityRelationshipName": "nhanVien"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "hopdong",
+            "otherEntityName": "hopDong",
+            "otherEntityRelationshipName": "nhanVien"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "lichsuthaotacnv",
+            "otherEntityName": "lichSuThaoTacHopDong",
+            "otherEntityRelationshipName": "nhanVien"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "tendangnhap",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "matkhau",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "ten",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "diachi",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 200
+        },
+        {
+            "fieldName": "dienthoai",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "cmnd",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 11
+        },
+        {
+            "fieldName": "trangthai",
+            "fieldType": "TrangThaiNhanVien",
+            "fieldValues": "DUNGHOATDONG,NHANVIEN,QUANLYCUAHANG,QUANTRI"
+        },
+        {
+            "fieldName": "ngayTao",
+            "fieldType": "ZonedDateTime"
+        }
+    ],
+    "changelogDate": "20180612170410",
+    "entityTableName": "nhan_vien",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false
+}

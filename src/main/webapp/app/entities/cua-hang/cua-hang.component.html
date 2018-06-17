@@ -1,0 +1,74 @@
+<div>
+    <h2>
+        <span>Cua Hangs</span>
+        <button class="btn btn-primary float-right jh-create-entity create-cua-hang" [routerLink]="['/', { outlets: { popup: ['cua-hang-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span >
+            Create new Cua Hang
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="cuaHangs">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span>ID</span></th>
+            <th><span>Ten</span></th>
+            <th><span>Diachi</span></th>
+            <th><span>Dienthoai</span></th>
+            <th><span>Cmnd</span></th>
+            <th><span>Trangthai</span></th>
+            <th><span>Ngay Tao</span></th>
+            <th><span>Xa</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let cuaHang of cuaHangs ;trackBy: trackId">
+                <td><a [routerLink]="['../cua-hang', cuaHang.id ]">{{cuaHang.id}}</a></td>
+                <td>{{cuaHang.ten}}</td>
+                <td>{{cuaHang.diachi}}</td>
+                <td>{{cuaHang.dienthoai}}</td>
+                <td>{{cuaHang.cmnd}}</td>
+                <td>{{cuaHang.trangthai}}</td>
+                <td>{{cuaHang.ngayTao | date:'medium'}}</td>
+                <td>
+                    <div *ngIf="cuaHang.xaId">
+                        <a [routerLink]="['../xa', cuaHang.xaId  ]" >{{cuaHang.xaId}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../cua-hang', cuaHang.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'cua-hang/'+ cuaHang.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'cua-hang/'+ cuaHang.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

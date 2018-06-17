@@ -1,0 +1,52 @@
+
+<div *ngIf="vayLai">
+    <h2><span>Vay Lai</span> {{vayLai.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span>Tienvay</span></dt>
+        <dd>
+            <span>{{vayLai.tienvay}}</span>
+        </dd>
+        <dt><span>Hinhthuclai</span></dt>
+        <dd>
+            <span>{{vayLai.hinhthuclai}}</span>
+        </dd>
+        <dt><span>Thoigianvay</span></dt>
+        <dd>
+            <span>{{vayLai.thoigianvay}}</span>
+        </dd>
+        <dt><span>Chukylai</span></dt>
+        <dd>
+            <span>{{vayLai.chukylai}}</span>
+        </dd>
+        <dt><span>Lai</span></dt>
+        <dd>
+            <span>{{vayLai.lai}}</span>
+        </dd>
+        <dt><span>Cachtinhlai</span></dt>
+        <dd>
+            <span>{{vayLai.cachtinhlai}}</span>
+        </dd>
+        <dt><span>Hopdongvl</span></dt>
+        <dd>
+            <div *ngIf="vayLai.hopdongvlId">
+                <a [routerLink]="['/hop-dong', vayLai.hopdongvlId]">{{vayLai.hopdongvlId}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'vay-lai/'+ vayLai.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span> Edit</span>
+    </button>
+</div>
